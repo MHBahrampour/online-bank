@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block title %}
+        <title>Register</title>
+    {% endblock %}
+  </head>
+  <body>
+      
+    {% block content %}
+      <form method="post">
+        {% csrf_token %}
+
+        <label for="username:">Username:</label>
+        <input type="text" name="username" id="input_username" placeholder="Enter your Username" required autofocus><br>
+
+        <label for="phone_number:">Phone Number:</label>
+        <input type="text" name="phone_number" id="input_phone_number" placeholder="Enter your Phone Number" required><br>
+
+        <label for="nid_number:">NID Number:</label>
+        <input type="text" name="nid_number" id="input_nid_number" placeholder="Enter your NID Number" required><br>
+
+        <label for="atm_card:">ATM Card:</label>
+        <input type="text" name="atm_card" id="input_atm_card" placeholder="Enter your ATM Card" required><br>
+
+        <label for="password1:">Password:</label>
+        <input type="password" name="password1" id="input_password1" placeholder="Enter your password" required><br>
+        <label for="password2">Confirm Password:</label>
+        <input type="password" name="password2" id="input_password2" placeholder="Confirm your password" required><br>
+
+        {% for field in registration_form %}
+            <p>
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            </p>
+        {% endfor %}
+
+        {% if registration_form.non_field_errors %}
+            <div style="color: red">
+                <p>{{registration_form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+            
+        <button type="submit">Register</button>
+
+      </form>
+    {% endblock %}
+
+  </body>
+</html>

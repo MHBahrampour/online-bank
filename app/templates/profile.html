@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+
+  <h3>User Data:</h3>
+  <p>Username: {{ username }}</p>
+  <p>Phone Number: {{ phone_number }}</p>
+  <p>Date Joined: {{ date_joined }}</p>
+  <hr>
+  
+  <h3>Personal Data:</h3>
+  <p>Fullname: {{ first_name }} {{ last_name }}</p>
+  <p>Fathers Name: {{ fathers_name }}</p>
+  <p>Date of Birth: {{ date_of_birth }}</p>
+  <p>Address: {{ address }}</p>
+  <p>Landline: {{ landline }}</p>
+  <p>ZIP Code: {{ zip_code }}</p>
+  <hr>
+  
+  <h3>Bank Account Data:</h3>
+  <p>Account Number: {{ account_number }}</p>
+  <p>ATM Card: {{ atm_card }}</p>
+  <p>CVV2: {{ cvv2 }}</p>
+  <p>Expire Date: {{ expire_date }}</p>
+  
+{% endblock %}

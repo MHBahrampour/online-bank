@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Your Transactions</title>
+{% endblock %}
+
+{% block content %}
+
+  <ol>
+  {% for transaction in transactions %}
+
+    {% if transaction.from_card == user_card %}
+      <a href="{{ transaction.get_absolute_url }}">
+        <li style="color: red;">Type: {{ transaction.type }} &mdash; To: {{ transaction.recipient }} &mdash; Amount: {{ transaction.amount }}$</li>
+      </a>
+    {% else %}
+      <a href="{{ transaction.get_absolute_url }}">
+        <li style="color: green;">Type: {{ transaction.type }} &mdash; Fr: {{ transaction.sender }} &mdash; Amount: {{ transaction.amount }}$</li>
+      </a>
+    {% endif %}
+
+  {% endfor %}
+  </ol>
+
+{% endblock %}

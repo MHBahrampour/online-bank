@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Transaction Detail</title>
+{% endblock %}
+
+{% block content %}
+
+  <p><b>Type:</b>           {{ transaction.type }}</p>
+  <p><b>Sender Card:</b>    {{ transaction.sender }}</p>
+  <p><b>Recipient Card:</b> {{ transaction.recipient }}</p>
+  <p><b>Amount:</b>         {{ transaction.amount }}</p>
+  <p><b>Date:</b>           {{ transaction.date_time.date }}</p>
+  <p><b>Time:</b>           {{ transaction.date_time.time }}</p>
+  <p><b>Description:</b>    {{ transaction.description }}</p>
+  <p><b>Credit:</b>         {{ transaction.rem_credit }}</p>
+
+{% endblock %}

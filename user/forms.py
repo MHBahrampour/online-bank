@@ -23,7 +23,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     username = self.cleaned_data['username']
 
-    # Check if the username is already in use
+    # Check that the username has not been used before
     try:
       username = CustomUser.objects.exclude(pk=self.instance.pk).get(username=username)
     except CustomUser.DoesNotExist:
@@ -35,7 +35,7 @@ class CustomUserCreationForm(UserCreationForm):
     
     phone_number = self.cleaned_data['phone_number']
 
-    # Check if the phone_number is correct (a number)
+    # Check that the phone_number is correct (a number)
     try:
       int(phone_number)
     except ValueError:
@@ -47,13 +47,13 @@ class CustomUserCreationForm(UserCreationForm):
 
     nid_number = self.cleaned_data['nid_number']
 
-    # Check if the nid_number is correct (a number)
+    # Check that the nid_number is correct (a number)
     try:
       int(nid_number)
     except ValueError:
       raise forms.ValidationError("Please enter a correct NID number. It should be contain only digits.")
 
-    # Check if the nid_number registered in Person table
+    # Check that the nid_number registered in Person table
     try:
       Person.objects.get(nid_number=nid_number)
     except Person.DoesNotExist:
@@ -65,19 +65,19 @@ class CustomUserCreationForm(UserCreationForm):
 
     atm_card = self.cleaned_data['atm_card']
 
-    # Check if the atm_card is correct (a number)
+    # Check that the atm_card is correct (a number)
     try:
       int(atm_card)
     except ValueError:
       raise forms.ValidationError("Please enter a correct NID number. It should be contain only digits.")
 
-    # Check if the atm_card registered in BankAccount table
+    # Check that the atm_card registered in BankAccount table
     try:
       BankAccount.objects.get(atm_card=atm_card)
     except BankAccount.DoesNotExist:
       raise forms.ValidationError("There is no account with this ATM card in the bank.")
 
-    # Check if the atm_card is already in use
+    # Check that atm_card is not already in use
     try:
       atm_card = CustomUser.objects.exclude(pk=self.instance.pk).get(atm_card=atm_card)
     except CustomUser.DoesNotExist:
@@ -95,6 +95,7 @@ class CustomUserAuthenticationForm(forms.ModelForm):
     model   = CustomUser
     fields  = ('username', 'password')
 
+  # Validating fields
   def clean(self):
     if self.is_valid():
       username = self.cleaned_data['username']

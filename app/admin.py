@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, BankAccount
+from .models import Person, BankAccount, Transaction
 
 
 class PersonAdmin(admin.ModelAdmin):
@@ -16,6 +16,13 @@ class BankAccountAdmin(admin.ModelAdmin):
   )
 	search_fields = ('nid_number', 'account_number', 'atm_card')
 
+class TransactionAdmin(admin.ModelAdmin):
+	list_display = (
+    'sender', 'recipient', 'amount', 'date_time'
+  )
+	search_fields = ('sender', 'recipient')
+
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(BankAccount, BankAccountAdmin)
+admin.site.register(Transaction, TransactionAdmin)

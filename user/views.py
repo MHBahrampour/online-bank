@@ -33,6 +33,7 @@ def registerUser(request):
 
   return render(request, 'register.html', context)
 
+
 def loginUser(request):
 
   context = {}
@@ -59,6 +60,7 @@ def loginUser(request):
   context['login_form'] = form
 
   return render(request, "login.html", context)
+
 
 def logoutUser(request):
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Transfer</title>
+{% endblock %}
+
+{% block content %}
+
+  <p>Your Card: {{ sender }} </p>
+  <form method="post">
+    {% csrf_token %}
+
+    {% for field in transaction_form %}
+      <div class="field-wrapper">
+        <p style="color: red">{{ field.errors }}</p>
+        {{ field.label_tag }} {{ field }}
+      </div>
+    {% endfor %}
+
+    {% if transaction_form.non_field_errors %}
+      <div style="color: red">
+          <p>{{ transaction_form.non_field_errors }}</p>
+      </div>
+    {% endif %}
+        
+    <button type="submit">Transfer</button>
+
+  </form>
+{% endblock %}

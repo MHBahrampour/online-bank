@@ -6,4 +6,11 @@ urlpatterns = [
   # Index page (Dashboard)
   path('', views.index, name='index'),
   path('profile/', views.profile, name='profile'),
+
+  path('transfer/', views.transfer, name='transfer'),
+  path('recharge/', views.recharge, name='recharge'),
+  path('charity/', views.charity, name='charity'),
+
+  path('transactions/', views.transactions, name='transactions'),
+  path('transactionDetail/<int:pk>/', views.transactionDetail, name='transaction_detail'),
 ]

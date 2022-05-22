@@ -1,9 +1,49 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-{% block title %}<title>Dashboard</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block content %}
-  <h3>{{ str1 }}</h3>
-  <h1>{{ str2 }}</h1>
-  <p>Username: {{ username }}</p>
-{% endblock %}
+  <!-- Load fonts from Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+  <!-- Load local stylesheets -->
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'app/css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'app/css/all.min.css' %}">
+
+  <!-- Set title of the page -->
+  <title>Online Bank</title>
+
+</head>
+<body>
+
+  <div class="banner">
+
+    <h1 class="ta-center">ONLINE BANK</h1>
+
+    <div class="banner-info ta-center">
+
+      <h2>A modern Bank in your hands.</h2>
+      <h2>Join our +10,000 customers!</h2>
+      <br>
+      <p>Are you ready to start?</p>
+      
+
+      <form action="{% url 'user:register' %}">
+        <input type="submit" value="register" class="input-button register">
+      </form>
+      <form action="{% url 'user:login' %}">
+        <input type="submit" value="login" class="input-button login">
+      </form>
+
+    </div>
+  </div>
+
+  <div class="features"></div>
+
+</body>
+</html>

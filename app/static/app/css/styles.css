@@ -1,0 +1,173 @@
+/* == List of Styles
+      1 GENERAL STYLES
+        1.1 Asterisk             1.2 Root                 1.3 HTML Tag
+        1.4 Body Tag             1.5 Header Tags
+
+      2 UTILITIES
+
+      3 BASE CONTAINERS
+
+      4 HOME PAGE
+
+      5 NAVBAR
+
+      5 BOOK/AUTHOR/GENRE LIST
+
+      6 BOOK/AUTHOR DETAIL
+
+      7 SHOPPING CART
+
+      8 REGISTERATION
+
+      9 MEDIA QUERIES
+*/
+
+/* || 1 GENERAL STYLES */
+* {
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* -- 1.2 Root -- */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+}
+
+
+/* -- 1.4 HTML Tag -- */
+html {
+  font-size: 10px;
+}
+
+/* -- 1.4 Body Tag -- */
+body {
+  font-size: clamp(1.38rem, 1.32rem + 0.25vw, 1.55rem);
+  font-family: 'Open Sans', sans-serif;
+
+  line-height: 1.7;
+}
+
+/* -- 1.5 Header Tags -- */
+h1 {
+  font-weight: 900;
+  font-size: 1.5em;
+}
+h2 {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+
+/* || 2 UTILITIES */
+
+/* Stick elements to the top of the page */
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* No decoratioin for links */
+.no-decoration {
+  text-decoration: none;
+  color: var(--dark-background);
+}
+
+/* A wrapper for icons */
+.inline-icon {
+  display: inline-grid;
+  justify-content: center;
+  width: 15px;
+}
+
+/* Center text align */
+.ta-center { text-align: center; }
+
+/* Puts an element vertically and horizontally in the center */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid-center {
+  display: grid;
+  place-self: center;
+}
+
+/* Puts an element vertically in the center */
+.center-vertically {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.input-button {
+  padding: 1rem 2rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.5s ease-in-out;
+}
+
+
+/* -- 3 BASE CONTAINERS -- */
+
+/* Container for Body tag */
+.main-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+/* -- 4 HOME PAGE -- */
+
+/* -- 4.1 BANNER -- */
+.banner {
+  padding: 2rem;
+
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+
+  font-size: 150%;
+  color: var(--white);
+
+  background-image: url("/static/app/banner-image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner .banner-info {
+  padding: 10rem 3rem;
+  text-shadow: 1px 1px 5px var(--black);
+}
+.banner form {
+  display: inline-block;
+  margin: 1rem 0.2rem;
+}
+
+.banner .input-button { font-size: 1.6rem; }
+
+.banner .input-button.register:hover {
+  background-color: #B85757;
+  color: var(--white);
+}
+.banner .input-button.login:hover {
+  background-color: #3D5A80;
+  color: var(--white);
+}
+
+/* -- 4.2 FEATURES CARD -- */
+
+
+/* -- 5 NAVBAR -- */
+
+
+/* -- 9 MEDIA QUERIES -- */

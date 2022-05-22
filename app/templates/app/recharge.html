@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  <title>Charity</title>
+  <title>Recharge</title>
 {% endblock %}
 
 {% block content %}
@@ -11,17 +11,11 @@
 
     {% for field in recharge_form %}
       <div class="field-wrapper">
-        {{ field.errors }}
+        <div style="color: red;">
+          {{ field.errors }}
+        </div>
         {{ field.label_tag }} {{ field }}
       </div>
-    {% endfor %}
-
-    {% for field in recharge_form %}
-      <p>
-      {% for error in field.errors %}
-          <p style="color: red">{{ field.name }}: {{ error }}</p>
-      {% endfor %}
-      </p>
     {% endfor %}
 
     {% if recharge_form.non_field_errors %}
@@ -30,7 +24,7 @@
       </div>
     {% endif %}
         
-    <button type="submit">Transfer</button>
+    <button type="submit">Purchase</button>
 
   </form>
 {% endblock %}

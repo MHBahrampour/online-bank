@@ -16,14 +16,6 @@
       </div>
     {% endfor %}
 
-    {% for field in charity_form %}
-      <p>
-      {% for error in field.errors %}
-          <p style="color: red">{{ field.name }}: {{ error }}</p>
-      {% endfor %}
-      </p>
-    {% endfor %}
-
     {% if charity_form.non_field_errors %}
       <div style="color: red">
           <p>{{charity_form.non_field_errors}}</p>

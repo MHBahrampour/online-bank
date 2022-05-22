@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from decimal import Decimal
 from django.db.models import Q
 
 from .models import Person, BankAccount, Transaction
@@ -76,7 +75,7 @@ def transfer(request):
     if form.is_valid():
 
       # Reduce the amount from the sender
-      amount = Decimal( form.cleaned_data.get('amount') )
+      amount = form.cleaned_data.get('amount')
       sender_bank_account_data = BankAccount.objects.get(atm_card=sender)
 
       sender_bank_account_data.credit -= amount
@@ -114,7 +113,8 @@ def transfer(request):
   else:
     form = TransferForm(request=request)
     context['transaction_form'] = form
-    context['sender'] = sender
+  
+  context['sender'] = sender
 
   return render(request, 'app/transfer.html', context)
 
@@ -138,14 +138,14 @@ def recharge(request):
   if request.POST:
 
     # Create the respective Form with a POST request
-    form = RechargeForm(request.POST)
+    form = RechargeForm(request.POST, request=request)
 
     # Check if the form passed verifications
     if form.is_valid():
 
       # Reduce the amount from the sender
-      amount = int( form.cleaned_data.get('charge_amount') )
-      tax = ( 9 * Decimal(amount) ) / 100
+      amount = form.cleaned_data.get('charge_amount')
+      tax = 0.09 * amount
       amountPlusTax = amount + tax
       sender_bank_account_data = BankAccount.objects.get(atm_card=sender)
 
@@ -171,7 +171,7 @@ def recharge(request):
 
   # If the request type is GET, create an empty form and pass it to template
   else:
-    form = RechargeForm()
+    form = RechargeForm(request=request)
     context['recharge_form'] = form
 
   return render(request, 'app/recharge.html', context)
@@ -196,13 +196,13 @@ def charity(request):
   if request.POST:
 
     # Create the respective Form with a POST request
-    form = CharityForm(request.POST)
+    form = CharityForm(request.POST, request=request)
 
     # Check if the form passed verifications
     if form.is_valid():
 
       # Reduce the amount from the sender
-      amount = Decimal( form.cleaned_data.get('amount') )
+      amount = form.cleaned_data.get('amount')
       sender_bank_account_data = BankAccount.objects.get(atm_card=sender)
 
       sender_bank_account_data.credit -= amount
@@ -227,7 +227,7 @@ def charity(request):
 
   # If the request type is GET, create an empty form and pass it to template
   else:
-    form = CharityForm()
+    form = CharityForm(request=request)
     context['charity_form'] = form
       
   return render(request, 'app/charity.html', context)

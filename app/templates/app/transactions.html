@@ -9,13 +9,13 @@
   <ol>
   {% for transaction in transactions %}
 
-    {% if transaction.from_card == user_card %}
+    {% if transaction.sender == user_card %}
       <a href="{{ transaction.get_absolute_url }}">
-        <li style="color: red;">Type: {{ transaction.type }} &mdash; To: {{ transaction.recipient }} &mdash; Amount: {{ transaction.amount }}$</li>
+        <li style="color: red;">Type: {{ transaction.type }} &mdash; To: {{ transaction.recipient }} &mdash; Amount: {{ transaction.amount }} IRR</li>
       </a>
     {% else %}
       <a href="{{ transaction.get_absolute_url }}">
-        <li style="color: green;">Type: {{ transaction.type }} &mdash; Fr: {{ transaction.sender }} &mdash; Amount: {{ transaction.amount }}$</li>
+        <li style="color: green;">Type: {{ transaction.type }} &mdash; Fr: {{ transaction.sender }} &mdash; Amount: {{ transaction.amount }} IRR</li>
       </a>
     {% endif %}
 

@@ -5,6 +5,8 @@ app_name = 'app'
 urlpatterns = [
   # Index page (Dashboard)
   path('', views.index, name='index'),
+
+  path('dashboard/', views.dashboard, name='dashboard'),
   path('profile/', views.profile, name='profile'),
 
   path('transfer/', views.transfer, name='transfer'),

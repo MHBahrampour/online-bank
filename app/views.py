@@ -11,15 +11,17 @@ from .forms import TransferForm, RechargeForm, CharityForm
 def index(request):
 
   if request.user.is_authenticated:
-    return redirect('app:profile')
+    return redirect('app:dashboard')
 
-  context = {
-    'str1': "Hi, I'm a useless bank application!",
-    'str2': "Just for now.",
-    'username': request.user,
-  }
+  return render(request, 'index.html')
 
-  return render(request, 'index.html', context)
+
+def dashboard(request):
+
+  if not request.user.is_authenticated:
+    return redirect('app:app')
+
+  return render(request, 'app/dashboard.html')
 
 
 def profile(request):

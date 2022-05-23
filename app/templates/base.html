@@ -20,30 +20,78 @@
 
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'app:index' %}">Dashboard</a></li>
-          {% if user.is_authenticated %}
-            <li><a href="{% url 'app:profile' %}">Profile</a></li>
-            <li><a href="{% url 'app:transactions' %}">Transactions</a></li>
-            <hr>
-            <li><a href="{% url 'app:transfer' %}">Transfer</a></li>
-            <li><a href="{% url 'app:recharge' %}">Recharge</a></li>
-            <li><a href="{% url 'app:charity' %}">Charity</a></li>
-            <hr>
-            <li><a href="{% url 'user:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a href="{% url 'user:login' %}">Login</a></li>
-            <li><a href="{% url 'user:register' %}">Register</a></li>
-          {% endif %} 
-        </ul>
-     {% endblock %}
+  
+  {% block sidebar %}
+
+    <i class="fa-solid fa-angles-right open-btn" id="sideNavOpenBtn"></i>
+
+    <nav class="sidenav" id="sideNav">
+      <i class="fa-solid fa-angles-left close-btn" id="sideNavCloseBtn"></i>
+
+      <div class="items">
+        <a href="{% url 'app:index' %}">Dashboard</a>
+        {% if user.is_authenticated %}
+          <a class="active" href="{% url 'app:profile' %}">Profile</a>
+          <a href="{% url 'app:transactions' %}">Transactions</a>
+          <hr>
+          <a href="{% url 'app:transfer' %}">Transfer</a>
+          <a href="{% url 'app:recharge' %}">Recharge</a>
+          <a href="{% url 'app:charity' %}">Charity</a>
+          <hr>
+          <a href="{% url 'user:logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'user:login' %}">Login</a>
+          <a href="{% url 'user:register' %}">Register</a>
+        {% endif %} 
       </div>
-      <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+
+      <div class="social-media">
+        <i class="fa-brands fa-telegram sm-1"></i>
+        <i class="fa-brands fa-instagram sm-2"></i>
+        <i class="fa-brands fa-internet-explorer sm-3"></i>
+        <i class="fa-brands fa-whatsapp sm-4"></i>
+        <i class="fa-brands fa-linkedin sm-5"></i>
+      </div>
+
+    </nav>
+  {% endblock %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><i class="fa-solid fa-square-phone-flip"></i> Contact Us</p>
+    <p><i class="fa-solid fa-envelope-open-text"></i> Email: mail@onlinebank.ir</p>
+    <p><i class="fa-solid fa-building-columns"></i> Office Number: 021-24846901</p>
+    <br>
+
+    <p><i class="fa-solid fa-circle-dot"></i> Quick Access</p>
+    <div class="links">
+      <a class="no-decoration" href="{% url 'app:transfer' %"><i class="fa-solid fa-link"></i> Transfer</a>
+      <a class="no-decoration" href="{% url 'app:recharge' %"><i class="fa-solid fa-link"></i> Recharge</a>
+      <a class="no-decoration" href="{% url 'app:charity' %"><i class="fa-solid fa-link"></i> Charity</a>
     </div>
+    <br>
+
+    <p class="copy-right"><i class="fa-solid fa-copyright"></i> All Rights Reserved for Online Bank.</p>
   </div>
 </body>
 </html>
+
+<script>
+  // Open the sideNav
+  const sideNavOpenBtn = document.querySelector("#sideNavOpenBtn");
+  sideNavOpenBtn.addEventListener('click', function() {
+    const sideNav = document.querySelector("#sideNav");
+    sideNav.style.width = "90vw";
+  })
+
+  // Close the sideNav
+  const sideNavCloseBtn = document.querySelector("#sideNavCloseBtn");
+  sideNavCloseBtn.addEventListener('click', function() {
+    const sideNav = document.querySelector("#sideNav");
+    sideNav.style.width = "0";
+  })
+</script>

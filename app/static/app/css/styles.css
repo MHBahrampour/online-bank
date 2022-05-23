@@ -34,13 +34,13 @@
 /* -- 1.2 Root -- */
 :root {
   --white: #F1FAEE;
-  --black: #060B11;
+  --black: #060b11;
 
   --light-red: #EC9A9A;
   --red: #E8525B;
   --dark-red: #E63946;
 
-  --ligth-blue: #A8DADC;
+  --light-blue: #A8DADC;
   --blue: #457B9D;
   --dark-blue: #1D3557;
 }
@@ -205,6 +205,120 @@ h2 {
   background-color: var(--dark-red);
   color: var(--white);
 }
+
+
+/* -- 5 SIDE NAV -- */
+.sidenav {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+
+  height: 100vh;
+  width: 0;
+
+  background-color: var(--black);
+  transition: all 0.5s;
+}
+
+.sidenav .items {
+  position: absolute;
+  bottom: 6rem;
+  margin: 2rem;
+
+  width: calc(90vw - 4rem);
+}
+.sidenav a {
+  display: block;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.5em;
+  
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  color: var(--white);
+
+  transition: all 0.5s ease;
+}
+
+.sidenav a:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.sidenav a:last-child:hover {
+  background-color: var(--dark-red);
+  color: var(--white);
+}
+
+.sidenav .active {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.open-btn,
+.sidenav .close-btn {
+  bottom: 2rem;
+  padding: 0.5rem 1rem;
+
+  font-size: 2em;
+  cursor: pointer;
+
+  background-color: var(--dark-red);
+  color: var(--white);
+}
+
+.open-btn {
+  position: fixed;
+  left: 0;
+
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.sidenav .close-btn {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+.sidenav .social-media {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+
+  width: calc(90vw - 2rem);
+  padding: 0.5rem 1rem;
+
+  background-color: #fff;
+
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.sidenav .social-media i {
+  display: block;
+  float: left;
+
+  margin-right: 2rem;
+
+  font-size: 2em;
+  color: var(--black);
+
+  cursor: pointer;
+}
+
+.sidenav .social-media .sm-1 { color: #1c8adb;}
+.sidenav .social-media .sm-2 { color: #cb12ab;}
+.sidenav .social-media .sm-3 { color: #00c8f6;}
+.sidenav .social-media .sm-4 { color: #00d264;}
+.sidenav .social-media .sm-5 { color: #0f4b9b;}
+
 
 /* -- 8 FOOTER -- */
 .footer {

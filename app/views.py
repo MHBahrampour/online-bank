@@ -10,6 +10,9 @@ from .forms import TransferForm, RechargeForm, CharityForm
 
 def index(request):
 
+  if request.user.is_authenticated:
+    return redirect('app:profile')
+
   context = {
     'str1': "Hi, I'm a useless bank application!",
     'str2': "Just for now.",
@@ -258,4 +261,3 @@ def transactionDetail(request, pk):
   }
 
   return render(request, 'app/transaction_detail.html', context)
-

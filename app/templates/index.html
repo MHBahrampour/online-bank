@@ -21,29 +21,67 @@
 </head>
 <body>
 
+  <!-- Banner -->
   <div class="banner">
 
-    <h1 class="ta-center">ONLINE BANK</h1>
+    <h1>ONLINE BANK</h1>
 
-    <div class="banner-info ta-center">
+    <div class="banner-info">
 
       <h2>A modern Bank in your hands.</h2>
       <h2>Join our +10,000 customers!</h2>
       <br>
-      <p>Are you ready to start?</p>
       
-
-      <form action="{% url 'user:register' %}">
-        <input type="submit" value="register" class="input-button register">
-      </form>
-      <form action="{% url 'user:login' %}">
-        <input type="submit" value="login" class="input-button login">
-      </form>
+      {% if user.is_authenticated %}
+        <form action="{% url 'app:profile' %}">
+          <input type="submit" value="Go to Dashboard" class="input-button dashboard-btn">
+        </form>
+      {% else %}
+        <p>Are you ready to start?</p>
+        <form action="{% url 'user:register' %}">
+          <input type="submit" value="register" class="input-button register-btn">
+        </form>
+        <form action="{% url 'user:login' %}">
+          <input type="submit" value="login" class="input-button login-btn">
+        </form>
+      {% endif %}
 
     </div>
   </div>
 
-  <div class="features"></div>
+  <!-- Introduction -->
+  <div>
+    <div class="feature-card fc-row1">
+      <p class="title"><i class="fa-solid fa-user-shield"></i>Secure</p>
+      <p class="text">We take your security and privacy very seriously so that you can use our bank application without any worries.</p>
+    </div>
+    <div class="feature-card fc-row2">
+      <p class="title"><i class="fa-solid fa-rocket"></i>Capable</p>
+      <p class="text">For your convenience, we have made the application fast, full-feature and reliable so that you can do most of the work online.</p>
+    </div>
+    <div class="feature-card fc-row3">
+      <p class="title"><i class="fa-solid fa-meteor"></i>Modern</p>
+      <p class="text">Our designers have put all their taste and creativity to provide a user-friendly application so that you will never get lost.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><i class="fa-solid fa-square-phone-flip"></i> Contact Us</p>
+    <p><i class="fa-solid fa-envelope-open-text"></i> Email: mail@onlinebank.ir</p>
+    <p><i class="fa-solid fa-building-columns"></i> Office Number: 021-24846901</p>
+    <br>
+
+    <p><i class="fa-solid fa-circle-dot"></i> Quick Access</p>
+    <div class="links">
+      <a class="no-decoration" href="{% url 'app:transfer' %"><i class="fa-solid fa-link"></i> Transfer</a>
+      <a class="no-decoration" href="{% url 'app:recharge' %"><i class="fa-solid fa-link"></i> Recharge</a>
+      <a class="no-decoration" href="{% url 'app:charity' %"><i class="fa-solid fa-link"></i> Charity</a>
+    </div>
+    <br>
+
+    <p class="copy-right"><i class="fa-solid fa-copyright"></i> All Rights Reserved for Online Bank.</p>
+  </div>
 
 </body>
 </html>

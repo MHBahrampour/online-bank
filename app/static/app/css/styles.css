@@ -33,8 +33,16 @@
 
 /* -- 1.2 Root -- */
 :root {
-  --white: #ffffff;
-  --black: #000000;
+  --white: #F1FAEE;
+  --black: #060B11;
+
+  --light-red: #EC9A9A;
+  --red: #E8525B;
+  --dark-red: #E63946;
+
+  --ligth-blue: #A8DADC;
+  --blue: #457B9D;
+  --dark-blue: #1D3557;
 }
 
 
@@ -73,7 +81,6 @@ h2 {
 /* No decoratioin for links */
 .no-decoration {
   text-decoration: none;
-  color: var(--dark-background);
 }
 
 /* A wrapper for icons */
@@ -82,9 +89,6 @@ h2 {
   justify-content: center;
   width: 15px;
 }
-
-/* Center text align */
-.ta-center { text-align: center; }
 
 /* Puts an element vertically and horizontally in the center */
 .center {
@@ -109,11 +113,10 @@ h2 {
 
 .input-button {
   padding: 1rem 2rem;
-  background-color: var(--white);
   border-radius: 1rem;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 
@@ -132,11 +135,9 @@ h2 {
 .banner {
   padding: 2rem;
 
-  border-bottom-left-radius: 2.5rem;
-  border-bottom-right-radius: 2.5rem;
-
   font-size: 150%;
   color: var(--white);
+  text-align: center;
 
   background-image: url("/static/app/banner-image.jpg");
   background-position: center;
@@ -155,16 +156,84 @@ h2 {
 
 .banner .input-button { font-size: 1.6rem; }
 
-.banner .input-button.register:hover {
-  background-color: #B85757;
+.banner .input-button.register-btn {
+  background-color: var(--dark-blue);
   color: var(--white);
 }
-.banner .input-button.login:hover {
-  background-color: #3D5A80;
+.banner .input-button.login-btn {
+  background-color: var(--dark-red);
+  color: var(--white);
+}
+.banner .input-button.register-btn:hover,
+.banner .input-button.login-btn:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* -- 4.2 FEATURES -- */
+.feature-card {
+  height: min-content;
+  padding: 5rem;
+  
+}
+.feature-card .title {
+  font-weight: 400;
+  font-size: 1.8em;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+.feature-card .text {
+  margin-top: 1em;
+  max-width: 35ch;
+  margin: 0 auto;
+
+  text-align: justify;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.fc-row1 {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  
+}
+.fc-row2 {
+  background-color: var(--white);
+}
+.fc-row3 {
+  background-color: var(--dark-red);
   color: var(--white);
 }
 
-/* -- 4.2 FEATURES CARD -- */
+/* -- 8 FOOTER -- */
+.footer {
+  padding: 3rem;
+  
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.footer .links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.footer .links a {
+  text-decoration: none;
+  color: var(--ligth-blue);
+  transition: all 0.5s ease;
+}
+.footer .links a:hover {
+  text-indent: 0.5ch;
+  letter-spacing: 0.1ch;
+}
+
+.footer .copy-right {
+  text-align: center;
+  background-color: var(--dark-red);
+  border-radius: 0.5em;
+}
 
 
 /* -- 5 NAVBAR -- */

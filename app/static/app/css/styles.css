@@ -69,6 +69,11 @@ h2 {
   font-size: 1.2em;
 }
 
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
 
 /* || 2 UTILITIES */
 
@@ -135,7 +140,7 @@ h2 {
 .banner {
   padding: 2rem;
 
-  font-size: 150%;
+  font-size: 1.5em;
   color: var(--white);
   text-align: center;
 
@@ -143,6 +148,11 @@ h2 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.banner .title {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 2.5em;
 }
 
 .banner .banner-info {
@@ -173,19 +183,39 @@ h2 {
 /* -- 4.2 FEATURES -- */
 .feature-card {
   height: min-content;
-  padding: 5rem;
-  
+  background-color: var(--dark-blue);;
 }
+
+.feature-card:nth-child(1) { background-color: #FCF3F3; }
+.feature-card:nth-child(1) .title { background-color: #e5989b; }
+.feature-card:nth-child(2) { background-color: #FEF7EE; }
+.feature-card:nth-child(2) .title { background-color: #F0BF70; }
+.feature-card:nth-child(3) { background-color: #E2F8F6; }
+.feature-card:nth-child(3) .title { background-color: #17c3b2; }
+
+
 .feature-card .title {
-  font-weight: 400;
+  position: relative;
+  top: 1rem;
+  left: 1rem;
+
+  width: calc(100vw - 2rem);
+
   font-size: 1.8em;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.5em;
+
+  background-color: var(--white);
+  color: var(--white);
+  padding: 1rem;
+
+  border-radius: 1rem;
 }
 .feature-card .text {
-  margin-top: 1em;
   max-width: 35ch;
+
+  padding: 2rem 2rem 1rem 2rem;
   margin: 0 auto;
 
   text-align: justify;
@@ -193,30 +223,16 @@ h2 {
   font-size: 1.5em;
 }
 
-.fc-row1 {
-  background-color: var(--dark-blue);
-  color: var(--white);
-  
-}
-.fc-row2 {
-  background-color: var(--white);
-}
-.fc-row3 {
-  background-color: var(--dark-red);
-  color: var(--white);
-}
-
 
 /* -- 5 SIDE NAV -- */
 .sidenav {
   position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
+  z-index: 2;
+  top: 0;
   overflow-x: hidden;
 
-  height: 100vh;
-  width: 0;
+  height: 0;
+  width: 100vw;
 
   background-color: var(--black);
   transition: all 0.5s;
@@ -224,10 +240,15 @@ h2 {
 
 .sidenav .items {
   position: absolute;
-  bottom: 6rem;
-  margin: 2rem;
+  bottom: 0rem;
 
-  width: calc(90vw - 4rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+
+  margin: 2rem;
+  width: calc(100vw - 2rem - 2rem - 5rem - 2rem);
+  
 }
 .sidenav a {
   display: block;
@@ -237,15 +258,16 @@ h2 {
   font-size: 1.5em;
   
   padding: 1rem 2rem;
+  margin: 0.5rem;
   border-radius: 1rem;
   color: var(--white);
-
+  
   transition: all 0.5s ease;
 }
 
 .sidenav a:hover {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .sidenav a:last-child:hover {
@@ -254,70 +276,172 @@ h2 {
 }
 
 .sidenav .active {
-  background-color: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .open-btn,
 .sidenav .close-btn {
-  bottom: 2rem;
-  padding: 0.5rem 1rem;
+  right: 2rem;
+  z-index: 1;
 
-  font-size: 2em;
+  display: grid;
+  place-items: center;
+
+  font-size: 2.5rem;
   cursor: pointer;
 
   background-color: var(--dark-red);
   color: var(--white);
+
+  height: 5rem;
+  width: 5rem;
 }
 
 .open-btn {
   position: fixed;
-  left: 0;
+  top: 0;
 
-  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
 
 .sidenav .close-btn {
   position: absolute;
-  right: 0;
-  z-index: 2;
+  bottom: 0;
   
   border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
+  border-top-right-radius: 2rem;
 }
 
 .sidenav .social-media {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 0rem;
+  right: 2rem;
 
-  width: calc(90vw - 2rem);
-  padding: 0.5rem 1rem;
+  display: grid;
+  place-items: center;
+
+  width: 5rem;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
 
   background-color: #fff;
 
-  border-top-left-radius: 1rem;
-  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
 }
 
 .sidenav .social-media i {
   display: block;
-  float: left;
+  float: right;
+  clear: right;
 
-  margin-right: 2rem;
+  margin-bottom: 2rem;
 
-  font-size: 2em;
+  font-size: 2.5rem;
   color: var(--black);
 
   cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
 }
+
+.sidenav .social-media i:hover { font-size: 3rem; }
 
 .sidenav .social-media .sm-1 { color: #1c8adb;}
 .sidenav .social-media .sm-2 { color: #cb12ab;}
 .sidenav .social-media .sm-3 { color: #00c8f6;}
 .sidenav .social-media .sm-4 { color: #00d264;}
 .sidenav .social-media .sm-5 { color: #0f4b9b;}
+
+
+/* -- 6 DASHBOARD -- */
+.dashboard-items-wrapper {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: repeat(5, min-content);
+  gap: 1rem;
+  padding: 2rem 1rem 3rem 1rem;
+}
+
+.dashboard-item {
+  display: grid;
+  grid-template-rows: 1fr;
+
+  border-radius: 1rem;
+  box-shadow: 0px 0px 25px 2.5px rgba(0,0,0,0.1);
+
+  transition: all 0.5s ease-in-out;
+}
+
+.dashboard-item.left {
+  grid-template-columns: 20% 80%;
+}
+
+.dashboard-item.right {
+  grid-template-columns: 80% 20%;
+}
+
+.dashboard-item:nth-child(1) { background-color: #fe6d73; }
+.dashboard-item:nth-child(2) { background-color: #17c3b2; }
+.dashboard-item:nth-child(3) { background-color: #252422;}
+.dashboard-item:nth-child(4) { background-color: #F0BF70; }
+.dashboard-item:nth-child(5) { background-color: #227c9d; }
+.dashboard-item:nth-child(6) { background-color: #E5989B; }
+
+.dashboard-item:hover { margin: 0.7rem;}
+.dashboard-item:hover .text p:first-child { letter-spacing: 0.2em; }
+
+.dashboard-item .icon {
+  display: grid;
+  place-items: center;
+
+  font-size: 2.5em;
+  color: var(--white);
+}
+
+.dashboard-item .text {
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+}
+
+.dashboard-item .text p:first-child { 
+  font-size: 1.5em;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  transition: all 0.5s ease-in-out;
+}
+
+
+/* -- 7 HEADER -- */
+.header {
+  position: sticky;
+  top: 0;
+
+  font-family: 'Grand Hotel', cursive;
+  line-height: 1;
+  font-size: 3.4rem;
+  text-align: center;
+
+  background-color: #fff;
+
+  height: 5rem;
+  padding-top: 1.5rem;
+
+  animation: colorchange 30s infinite alternate;
+}
+
+@keyframes colorchange {
+  16.6% { color: #252422; }
+  33.2% { color: #E5989B; }
+  49.8% { color: #17c3b2; }
+  66.4% { color: #dfa343; }
+  83%   { color: #227c9d; }
+  100%  { color: #fe6d73; }
+}
 
 
 /* -- 8 FOOTER -- */
@@ -350,7 +474,9 @@ h2 {
 }
 
 
-/* -- 5 NAVBAR -- */
-
-
 /* -- 9 MEDIA QUERIES -- */
+@media screen and (min-width: 600px) {
+  .sidenav .items {
+    grid-template-columns: 1fr 1fr;
+  }
+}

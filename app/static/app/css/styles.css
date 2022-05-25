@@ -43,6 +43,14 @@
   --light-blue: #A8DADC;
   --blue: #457B9D;
   --dark-blue: #1D3557;
+
+  /* Theme of differente sections */
+  --credit-th: #fe6d73;
+  --transactions-th: #17c3b2;
+  --transfer-th: #252422;
+  --recharge-th: #F0BF70;
+  --charity-th: #227c9d;
+  --profile-th: #E5989B;
 }
 
 
@@ -96,12 +104,12 @@ a {
 }
 
 /* Puts an element vertically and horizontally in the center */
-.center {
+/* .center {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 
 .grid-center {
   display: grid;
@@ -132,6 +140,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr min-content;
+  padding: 2rem;
 }
 
 /* -- 4 HOME PAGE -- */
@@ -206,7 +215,6 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.5em;
 
-  background-color: var(--white);
   color: var(--white);
   padding: 1rem;
 
@@ -339,15 +347,13 @@ a {
 
   margin-bottom: 2rem;
 
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: var(--black);
 
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;
 }
-
-.sidenav .social-media i:hover { font-size: 3rem; }
 
 .sidenav .social-media .sm-1 { color: #1c8adb;}
 .sidenav .social-media .sm-2 { color: #cb12ab;}
@@ -362,7 +368,6 @@ a {
   grid-template-columns: 1;
   grid-template-rows: repeat(5, min-content);
   gap: 1rem;
-  padding: 2rem 1rem 3rem 1rem;
 }
 
 .dashboard-item {
@@ -370,7 +375,7 @@ a {
   grid-template-rows: 1fr;
 
   border-radius: 1rem;
-  box-shadow: 0px 0px 25px 2.5px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
 
   transition: all 0.5s ease-in-out;
 }
@@ -383,12 +388,12 @@ a {
   grid-template-columns: 80% 20%;
 }
 
-.dashboard-item:nth-child(1) { background-color: #fe6d73; }
-.dashboard-item:nth-child(2) { background-color: #17c3b2; }
-.dashboard-item:nth-child(3) { background-color: #252422;}
-.dashboard-item:nth-child(4) { background-color: #F0BF70; }
-.dashboard-item:nth-child(5) { background-color: #227c9d; }
-.dashboard-item:nth-child(6) { background-color: #E5989B; }
+.dashboard-item:nth-child(1) { background-color: var(--credit-th); }
+.dashboard-item:nth-child(2) { background-color: var(--transactions-th); }
+.dashboard-item:nth-child(3) { background-color: var(--transfer-th); }
+.dashboard-item:nth-child(4) { background-color: var(--recharge-th); }
+.dashboard-item:nth-child(5) { background-color: var(--charity-th); }
+.dashboard-item:nth-child(6) { background-color: var(--profile-th); }
 
 .dashboard-item:hover { margin: 0.7rem;}
 .dashboard-item:hover .text p:first-child { letter-spacing: 0.2em; }
@@ -415,8 +420,98 @@ a {
   transition: all 0.5s ease-in-out;
 }
 
+.dashboard-item .text p:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-/* -- 7 HEADER -- */
+
+/* -- 7 Forms -- */
+.form {
+  border-radius: 2rem;
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.form .title {
+  font-size: 1.2em;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1rem;
+  margin-bottom: 1rem ;
+
+  border-radius: 1rem;
+}
+
+.form .title.transfer { background-color: var(--transfer-th); }
+.form .title.recharge { background-color: var(--recharge-th); }
+.form .title.charity  { background-color: var(--charity-th); }
+
+.form input[type=text],
+.form input[type=password] {
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  outline: 2px solid #e9e9ed;
+}
+
+.form input[type=text]:focus,
+.form input[type=password]:focus {
+  outline: 2px solid var(--blue);
+}
+
+.form button {
+  padding: 1rem;
+  width: 100%;
+  border-radius: 1rem;
+  margin-top: 1rem;
+
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+
+  line-height: 1.5;
+  cursor: pointer;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.form button:hover { box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.1); }
+
+
+
+.form .field-wrapper { margin-bottom: 1rem; }
+
+.form label { display: block; margin-bottom: 0.3rem; }
+
+.form select {
+  border-radius: 1rem;
+
+  padding: 1rem;
+  width: 100%;
+
+  background-color: #fff;
+  outline: 2px solid #e9e9ed;
+
+  cursor: pointer;
+
+  appearance: none;
+  background-image: url("/static/app/down-arrow.png");
+  background-size: 1.4rem;
+  background-position: calc(100% - 2rem) center;
+  background-repeat: no-repeat;
+}
+
+.form select:focus {
+  margin-bottom: 1rem;
+}
+
+
+/* -- 8 FOOTER & FOOTER -- */
 .header {
   position: sticky;
   top: 0;
@@ -443,8 +538,6 @@ a {
   100%  { color: #fe6d73; }
 }
 
-
-/* -- 8 FOOTER -- */
 .footer {
   padding: 3rem;
   

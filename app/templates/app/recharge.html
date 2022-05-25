@@ -6,25 +6,29 @@
 
 {% block content %}
 
-  <form method="post">
-    {% csrf_token %}
+  <div class="form">
+    <p class="title recharge">Recharge</p>
 
-    {% for field in recharge_form %}
-      <div class="field-wrapper">
-        <div style="color: red;">
-          {{ field.errors }}
+    <form method="post">
+      {% csrf_token %}
+
+      {% for field in recharge_form %}
+        <div class="field-wrapper">
+          <div style="color: red;">
+            {{ field.errors }}
+          </div>
+          {{ field.label_tag }} {{ field }}
         </div>
-        {{ field.label_tag }} {{ field }}
-      </div>
-    {% endfor %}
+      {% endfor %}
 
-    {% if recharge_form.non_field_errors %}
-      <div style="color: red">
-          <p>{{recharge_form.non_field_errors}}</p>
-      </div>
-    {% endif %}
-        
-    <button type="submit">Purchase</button>
+      {% if recharge_form.non_field_errors %}
+        <div style="color: red">
+            <p>{{recharge_form.non_field_errors}}</p>
+        </div>
+      {% endif %}
+          
+      <button type="submit">Purchase</button>
 
-  </form>
+    </form>
+  </div>
 {% endblock %}

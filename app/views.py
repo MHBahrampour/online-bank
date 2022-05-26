@@ -258,8 +258,12 @@ def transactionDetail(request, pk):
 
   transaction = Transaction.objects.get(pk=pk)
 
+  # User card number
+  user_card = CustomUser.objects.get(username=request.user.username).atm_card
+
   context = {
     'transaction': transaction,
+    'user_card': user_card,
   }
 
   return render(request, 'app/transaction_detail.html', context)

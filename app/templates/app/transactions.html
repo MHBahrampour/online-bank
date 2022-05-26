@@ -6,20 +6,37 @@
 
 {% block content %}
 
-  <ol>
+  <div class="transaction-items-wrapper">
   {% for transaction in transactions %}
 
-    {% if transaction.sender == user_card %}
-      <a href="{{ transaction.get_absolute_url }}">
-        <li style="color: red;">Type: {{ transaction.type }} &mdash; To: {{ transaction.recipient }} &mdash; Amount: {{ transaction.amount }} IRR</li>
-      </a>
-    {% else %}
-      <a href="{{ transaction.get_absolute_url }}">
-        <li style="color: green;">Type: {{ transaction.type }} &mdash; Fr: {{ transaction.sender }} &mdash; Amount: {{ transaction.amount }} IRR</li>
-      </a>
-    {% endif %}
+    <a href="{{ transaction.get_absolute_url }}">
+      <div class="transaction-item ">
 
+        <!-- Choosing the icon -->
+        {% if transaction.type == "Transfer" %}
+          <i class="fa-solid fa-money-check icon 
+          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+        {% elif transaction.type == "Recharge" %}
+          <i class="fa-solid fa-sim-card icon
+          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+        {% else %}
+          <i class="fa-solid fa-hand-holding-heart icon
+          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+        {% endif %}
+
+        <!-- Printing data -->
+        <div class="text">
+          <p><i class="fa-solid fa-tag"></i> {{ transaction.type }}</p>
+          <p><i class="fa-solid fa-coins"></i> {{ transaction.amount }} IRR</p>
+          <p><i class="fa-solid fa-calendar-day"></i> {{ transaction.date_time.date }} &mdash; {{ transaction.date_time.time }}</p>
+        </div>
+
+        <!-- Arrow icon -->
+        <i class="fa-solid fa-angle-right icon
+        {% if transaction.recipient == user_card %} recipient {% endif %}"></i>
+      </div>
+    </a>
   {% endfor %}
-  </ol>
+  </div>
 
 {% endblock %}

@@ -6,13 +6,55 @@
 
 {% block content %}
 
-  <p><b>Type:</b>           {{ transaction.type }}</p>
-  <p><b>Sender Card:</b>    {{ transaction.sender }}</p>
-  <p><b>Recipient Card:</b> {{ transaction.recipient }}</p>
-  <p><b>Amount:</b>         {{ transaction.amount }}</p>
-  <p><b>Date:</b>           {{ transaction.date_time.date }}</p>
-  <p><b>Time:</b>           {{ transaction.date_time.time }}</p>
-  <p><b>Description:</b>    {{ transaction.description }}</p>
-  <p><b>Credit:</b>         {{ transaction.rem_credit }}</p>
+  <div class="transaction-detail">
+
+    <!-- Choosing the icon -->
+    {% if transaction.type == "Transfer" %}
+      <i class="fa-solid fa-money-bill-transfer icon 
+      {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+    {% elif transaction.type == "Recharge" %}
+      <i class="fa-solid fa-sim-card icon
+      {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+    {% else %}
+      <i class="fa-solid fa-hand-holding-heart icon
+      {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+    {% endif %}
+
+    <div class="short">
+
+      {% if transaction.type == "Transfer" %}
+        {% if transaction.sender == user_card %}
+          <p>Sending Money</p>
+        {% else %}
+          <p>Receiving Money</p>
+        {% endif %}
+
+      {% elif transaction.type == "Recharge" %}
+        <p>Shopping</p>
+
+      {% else %}
+      <p>Donating</p>
+        
+      {% endif %}
+
+      <p></b>{{ transaction.amount }} IRR</p>
+
+    </div>
+
+    <div class="full">
+      <p><i class="fa-solid fa-circle-right"></i> <b>Sender:</b> {{ transaction.sender }}</p>
+      <p><i class="fa-solid fa-circle-left"></i> <b>Recipient:</b> {{ transaction.recipient }}</p>
+      <p><i class="fa-solid fa-wallet"></i> <b>Remaining Credit:</b> {{ transaction.rem_credit }} IRR</p>
+      <p><i class="fa-solid fa-calendar-day"></i> <b>Date:</b> {{ transaction.date_time.date }}</p>
+      <p><i class="fa-solid fa-clock"></i> <b>Time:</b> {{ transaction.date_time.time }}</p>
+      
+      {% if transaction.description %}
+        <p><i class="fa-solid fa-quote-left"></i> <b>Description:</b> {{ transaction.description }}</p>
+      {% else %}
+        <p><i class="fa-solid fa-quote-left"></i> <b>Description:</b> Nothing to show.</p>
+      {% endif %}
+    </div>
+
+  </div>
 
 {% endblock %}

@@ -51,6 +51,10 @@
   --recharge-th: #F0BF70;
   --charity-th: #227c9d;
   --profile-th: #E5989B;
+
+  /* Sender and Recipient color*/
+  --sender: #fe6d73;
+  --recipient: #17c3b2;
 }
 
 
@@ -395,7 +399,7 @@ a {
 .dashboard-item:nth-child(5) { background-color: var(--charity-th); }
 .dashboard-item:nth-child(6) { background-color: var(--profile-th); }
 
-.dashboard-item:hover { margin: 0.7rem;}
+.dashboard-item:hover { margin: 0.7rem; }
 .dashboard-item:hover .text p:first-child { letter-spacing: 0.2em; }
 
 .dashboard-item .icon {
@@ -427,7 +431,94 @@ a {
 }
 
 
-/* -- 7 Forms -- */
+/* -- 9 TRANSACTION -- */
+
+/* -- 9.1 TRANSACTIONS LIST -- */
+.transaction-items-wrapper {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: min-content;
+  gap: 1rem;
+}
+
+.transaction-item {
+  display: grid;
+  grid-template-columns: 20% 1fr 10%;
+  grid-template-rows: min-content;
+
+  border-bottom-left-radius: 3rem;
+  border-top-right-radius: 3rem;
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+
+  transition: all 0.5s ease-in-out;
+}
+
+.transaction-item:hover { margin: 0.7rem; }
+
+.transaction-item .icon {
+  display: grid;
+  place-items: center;
+
+  font-size: 2em;
+  color: var(--black);
+}
+
+/* By default (Money transfered from user card */
+.transaction-item .icon:first-child {
+  background-color: var(--sender);
+  color: var(--white);
+
+  border-bottom-left-radius: 3rem;
+}
+.transaction-item .icon:last-child { color: var(--sender); }
+
+/* If the user is the recipient */
+.transaction-item .icon:first-child.recipient {
+  background-color: var(--recipient);
+  color: var(--white);
+
+  border-bottom-left-radius: 3rem;
+}
+.transaction-item .icon:last-child.recipient { color: var(--recipient); }
+
+.transaction-item .text {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+.transaction-item .text p:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* -- 9.2 TRANSACTION DETAIL -- */
+.transaction-detail {
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+}
+
+.transaction-detail .icon {
+  display: grid;
+  place-items: center;
+  font-size: 3.5em;
+  color: var(--black);
+}
+
+.transaction-detail .short {
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9e9ed;
+}
+.transaction-detail .full p { line-height: 3; }
+
+
+/* -- 8 FORMS -- */
 .form {
   border-radius: 2rem;
   box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
@@ -482,11 +573,12 @@ a {
 
 .form button:hover { box-shadow: inset 0px 0px 5px 1px rgba(0,0,0,0.1); }
 
-
-
 .form .field-wrapper { margin-bottom: 1rem; }
 
-.form label { display: block; margin-bottom: 0.3rem; }
+.form label { 
+  display: block;
+  margin-bottom: 0.3rem;
+}
 
 .form select {
   border-radius: 1rem;
@@ -506,12 +598,8 @@ a {
   background-repeat: no-repeat;
 }
 
-.form select:focus {
-  margin-bottom: 1rem;
-}
 
-
-/* -- 8 FOOTER & FOOTER -- */
+/* -- 9 FOOTER & FOOTER -- */
 .header {
   position: sticky;
   top: 0;
@@ -567,7 +655,7 @@ a {
 }
 
 
-/* -- 9 MEDIA QUERIES -- */
+/* -- 10 MEDIA QUERIES -- */
 @media screen and (min-width: 600px) {
   .sidenav .items {
     grid-template-columns: 1fr 1fr;

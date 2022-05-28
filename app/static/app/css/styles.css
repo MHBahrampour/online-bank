@@ -295,7 +295,7 @@ a {
 .open-btn,
 .sidenav .close-btn {
   right: 2rem;
-  z-index: 1;
+  z-index: 2;
 
   display: grid;
   place-items: center;
@@ -387,17 +387,46 @@ a {
 .dashboard-item.left {
   grid-template-columns: 20% 80%;
 }
+.dashboard-item.left .icon {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
 
 .dashboard-item.right {
   grid-template-columns: 80% 20%;
 }
+.dashboard-item.right .icon {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
 
-.dashboard-item:nth-child(1) { background-color: var(--credit-th); }
-.dashboard-item:nth-child(2) { background-color: var(--transactions-th); }
-.dashboard-item:nth-child(3) { background-color: var(--transfer-th); }
-.dashboard-item:nth-child(4) { background-color: var(--recharge-th); }
-.dashboard-item:nth-child(5) { background-color: var(--charity-th); }
-.dashboard-item:nth-child(6) { background-color: var(--profile-th); }
+.dashboard-item:nth-child(1) .icon {
+  background-color: var(--credit-th);
+  border-right: 1rem solid var(--credit-th);
+}
+.dashboard-item:nth-child(2) .icon {
+  background-color: var(--transactions-th);
+  right: 1rem;
+  border-left: 1rem solid var(--transactions-th);
+}
+.dashboard-item:nth-child(3) .icon {
+  background-color: var(--transfer-th);
+  border-right: 1rem solid var(--transfer-th);
+}
+.dashboard-item:nth-child(4) .icon {
+  background-color: var(--recharge-th);
+  right: 1rem;
+  border-left: 1rem solid var(--recharge-th);
+}
+.dashboard-item:nth-child(5) .icon {
+  background-color: var(--charity-th);
+  border-right: 1rem solid var(--charity-th);
+}
+.dashboard-item:nth-child(6) .icon {
+  background-color: var(--profile-th);
+  right: 1rem;
+  border-left: 1rem solid var(--profile-th);
+}
 
 .dashboard-item:hover { margin: 0.7rem; }
 .dashboard-item:hover .text p:first-child { letter-spacing: 0.2em; }
@@ -408,6 +437,11 @@ a {
 
   font-size: 2.5em;
   color: var(--white);
+
+  /* For outside border radius (left side) */
+  position: relative;
+  z-index: -1;
+  width: calc(100% + 1rem);
 }
 
 .dashboard-item .text {
@@ -431,9 +465,9 @@ a {
 }
 
 
-/* -- 9 TRANSACTION -- */
+/* -- 7 TRANSACTION -- */
 
-/* -- 9.1 TRANSACTIONS LIST -- */
+/* -- 7.1 TRANSACTIONS LIST -- */
 .transaction-items-wrapper {
   display: grid;
   grid-template-columns: 1;
@@ -446,9 +480,8 @@ a {
   grid-template-columns: 20% 1fr 10%;
   grid-template-rows: min-content;
 
-  border-bottom-left-radius: 3rem;
-  border-top-right-radius: 3rem;
   box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+  border-radius: 1rem;
 
   transition: all 0.5s ease-in-out;
 }
@@ -460,30 +493,43 @@ a {
   place-items: center;
 
   font-size: 2em;
+}
+
+/* Transaction type icon */
+.transaction-item .icon:first-child {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  background-color: #fff;
   color: var(--black);
 }
 
-/* By default (Money transfered from user card */
-.transaction-item .icon:first-child {
+/* Right arrow */
+.transaction-item .icon:last-child {
   background-color: var(--sender);
-  color: var(--white);
+  color: #fff;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 
-  border-bottom-left-radius: 3rem;
+  /* For outside border radius (left side) */
+  position: relative;
+  right: 1rem;
+  z-index: -1;
+  border-left: 1rem solid var(--sender);
+  width: calc(100% + 1rem);
 }
-.transaction-item .icon:last-child { color: var(--sender); }
 
-/* If the user is the recipient */
-.transaction-item .icon:first-child.recipient {
+.transaction-item .icon:last-child.recipient {
   background-color: var(--recipient);
-  color: var(--white);
-
-  border-bottom-left-radius: 3rem;
+  border-left: 1rem solid var(--recipient);
 }
-.transaction-item .icon:last-child.recipient { color: var(--recipient); }
 
 .transaction-item .text {
   padding: 1rem 1.5rem;
   font-weight: 500;
+
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: #fff;
 }
 .transaction-item .text p:last-child {
   white-space: nowrap;
@@ -491,7 +537,7 @@ a {
   text-overflow: ellipsis;
 }
 
-/* -- 9.2 TRANSACTION DETAIL -- */
+/* -- 7.2 TRANSACTION DETAIL -- */
 .transaction-detail {
   padding: 2rem;
   border-radius: 2rem;
@@ -599,10 +645,42 @@ a {
 }
 
 
-/* -- 9 FOOTER & FOOTER -- */
+/* -- 9 PROFILE -- */
+.profile-wrapper {
+  padding: 2rem;
+  box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.1);
+  border-radius: 2rem;
+  font-weight: bold;
+}
+
+.profile-wrapper .title {
+  font-size: 1.4em;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+
+  border-bottom: 1px solid #e9e9ed;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-wrapper .title:not(:first-child) { margin-top: 2rem; }
+
+.profile-wrapper span {
+  display: block;
+  position: relative;
+  left: 2rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+
+/* -- 10 FOOTER & FOOTER -- */
 .header {
   position: sticky;
   top: 0;
+  z-index: 1;
 
   font-family: 'Grand Hotel', cursive;
   line-height: 1;
@@ -655,7 +733,7 @@ a {
 }
 
 
-/* -- 10 MEDIA QUERIES -- */
+/* -- 11 MEDIA QUERIES -- */
 @media screen and (min-width: 600px) {
   .sidenav .items {
     grid-template-columns: 1fr 1fr;

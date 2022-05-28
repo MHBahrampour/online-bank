@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from textwrap import wrap
 
 from .models import Person, BankAccount, Transaction
 from user.models import CustomUser
@@ -18,12 +20,30 @@ def index(request):
 
 def dashboard(request):
 
-  if not request.user.is_authenticated:
-    return redirect('app:app')
+  # Get User model of the current user 
+  user = request.user
 
-  return render(request, 'app/dashboard.html')
+  # Redirct to home page if user is not authenticated
+  if not user.is_authenticated:
+    return redirect('app:index')
+
+  # Access the user credit card number
+  user_card = CustomUser.objects.get(username=user.username).atm_card
+  credit_amount = BankAccount.objects.get(atm_card=user_card).credit
+
+  # Turn the string into 3-character slices
+  sliced_creit_amount = wrap( str(credit_amount)[::-1], 3)
+  # Then join them together with a space between each slice
+  credit_amount = ' '.join(sliced_creit_amount)[::-1]
+
+  context = {
+    'credit_amount': credit_amount,
+  }
+
+  return render(request, 'app/dashboard.html', context)
 
 
+@login_required(login_url='/user/login/')
 def profile(request):
 
   user_data = CustomUser.objects.get(username=request.user)
@@ -55,6 +75,7 @@ def profile(request):
   return render(request, 'app/profile.html', context)
 
 
+@login_required(login_url='/user/login/')
 def transfer(request):
 
   # Define context dictionary to be filled in the process
@@ -124,6 +145,7 @@ def transfer(request):
   return render(request, 'app/transfer.html', context)
 
 
+@login_required(login_url='/user/login/')
 def recharge(request):
 
   # Define context dictionary to be filled in the process
@@ -182,6 +204,7 @@ def recharge(request):
   return render(request, 'app/recharge.html', context)
 
 
+@login_required(login_url='/user/login/')
 def charity(request):
 
   # Define context dictionary to be filled in the process
@@ -238,6 +261,7 @@ def charity(request):
   return render(request, 'app/charity.html', context)
 
 
+@login_required(login_url='/user/login/')
 def transactions(request):
 
   # User card number
@@ -254,6 +278,7 @@ def transactions(request):
   return render(request, 'app/transactions.html', context)
 
 
+@login_required(login_url='/user/login/')
 def transactionDetail(request, pk):
 
   transaction = Transaction.objects.get(pk=pk)

@@ -10,18 +10,15 @@
   {% for transaction in transactions %}
 
     <a href="{{ transaction.get_absolute_url }}">
-      <div class="transaction-item ">
+      <div class="transaction-item">
 
         <!-- Choosing the icon -->
         {% if transaction.type == "Transfer" %}
-          <i class="fa-solid fa-money-check icon 
-          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+          <i class="fa-solid fa-money-check icon"></i>
         {% elif transaction.type == "Recharge" %}
-          <i class="fa-solid fa-sim-card icon
-          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+          <i class="fa-solid fa-sim-card icon"></i>
         {% else %}
-          <i class="fa-solid fa-hand-holding-heart icon
-          {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
+          <i class="fa-solid fa-hand-holding-heart icon"></i>
         {% endif %}
 
         <!-- Printing data -->
@@ -32,8 +29,7 @@
         </div>
 
         <!-- Arrow icon -->
-        <i class="fa-solid fa-angle-right icon
-        {% if transaction.recipient == user_card %} recipient {% endif %}"></i>
+        <i class="fa-solid fa-angle-right icon {% if transaction.recipient == user_card %} recipient {% endif%}"></i>
       </div>
     </a>
   {% endfor %}

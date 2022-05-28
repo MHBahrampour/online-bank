@@ -7,13 +7,13 @@
 {% block content %}
   <div class="dashboard-items-wrapper">
 
-    <a href="" class="dashboard-item left">
+    <div class="dashboard-item left">
       <i class="fa-solid fa-credit-card icon"></i>
       <div class="text">
         <p>Credit</p>
-        <p>Check your credit amount</p>
+        <p>You have: {{ credit_amount }} IRR</p>
       </div>
-    </a>
+    </div>
 
     <a href="{% url 'app:transactions' %}" class="dashboard-item right">
       <div class="text">

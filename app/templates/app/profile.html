@@ -6,27 +6,33 @@
 
 {% block content %}
 
-  <div class="profile-wrapper">
-    <p class="title">User</p>
-    <p>Username <span>{{ username }}</span></p>
-    <p>Phone Number <span>{{ phone_number }}</span></p>
-    <p>Date Joined <span>{{ date_joined }}</span></p>
-    <hr>
+  <div class="profile-items-wrapper">
+
+    <div class="profile-item">
+      <p class="title">User</p>
+      <p>Username <span>{{ username }}</span></p>
+      <p>Phone Number <span>{{ phone_number }}</span></p>
+      <p>Date Joined <span>{{ date_joined }}</span></p>
+    </div>
     
-    <p class="title">Personal</p>
-    <p>Fullname <span>{{ first_name }} {{ last_name }}</span></p>
-    <p>Fathers Name <span>{{ fathers_name }}</span></p>
-    <p>Date of Birth <span>{{ date_of_birth }}</span></p>
-    <p>Address <span>{{ address }}</span></p>
-    <p>Landline <span>{{ landline }}</span></p>
-    <p>ZIP Code <span>{{ zip_code }}</span></p>
-    <hr>
+    <div class="profile-item">
+      <p class="title">Personal</p>
+      <p>Fullname <span>{{ first_name }} {{ last_name }}</span></p>
+      <p>Fathers Name <span>{{ fathers_name }}</span></p>
+      <p>Date of Birth <span>{{ date_of_birth }}</span></p>
+      <p>Address <span>{{ address }}</span></p>
+      <p>Landline <span>{{ landline }}</span></p>
+      <p>ZIP Code <span>{{ zip_code }}</span></p>
+    </div>
     
-    <p class="title">Bank Account</p>
-    <p>Account Number <span>{{ account_number }}</span></p>
-    <p>ATM Card <span>{{ atm_card }}</span></p>
-    <p>CVV2 <span>{{ cvv2 }}</span></p>
-    <p>Expire Date <span>{{ expire_date }}</span></p>
+    <div class="profile-item">
+      <p class="title">Bank Account</p>
+      <p>Account Number <span>{{ account_number }}</span></p>
+      <p>ATM Card <span>{{ atm_card }}</span></p>
+      <p>CVV2 <span>{{ cvv2 }}</span></p>
+      <p>Expire Date <span>{{ expire_date }}</span></p>
+    </div>
+
   </div>
 
 {% endblock %}

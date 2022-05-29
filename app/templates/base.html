@@ -20,7 +20,7 @@
   {% block title %}<title>Online Bank</title>{% endblock %}
 
 </head>
-<body>
+<body class="base-container">
   
   {% block sidebar %}
 
@@ -87,24 +87,6 @@
   <main class="main-wrapper">
     {% block content %}{% endblock %}
   </main>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p><i class="fa-solid fa-square-phone-flip"></i> Contact Us</p>
-    <p><i class="fa-solid fa-envelope-open-text"></i> Email: mail@onlinebank.ir</p>
-    <p><i class="fa-solid fa-building-columns"></i> Office Number: 021-24846901</p>
-    <br>
-
-    <p><i class="fa-solid fa-circle-dot"></i> Quick Access</p>
-    <div class="links">
-      <a class="no-decoration" href="{% url 'app:transfer' %"><i class="fa-solid fa-link"></i> Transfer</a>
-      <a class="no-decoration" href="{% url 'app:recharge' %"><i class="fa-solid fa-link"></i> Recharge</a>
-      <a class="no-decoration" href="{% url 'app:charity' %"><i class="fa-solid fa-link"></i> Charity</a>
-    </div>
-    <br>
-
-    <p class="copy-right"><i class="fa-solid fa-copyright"></i> All Rights Reserved for Online Bank.</p>
-  </div>
 
 </body>
 </html>

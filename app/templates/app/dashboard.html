@@ -7,7 +7,7 @@
 {% block content %}
   <div class="dashboard-items-wrapper">
 
-    <div class="dashboard-item left">
+    <div class="dashboard-item">
       <i class="fa-solid fa-credit-card icon"></i>
       <div class="text">
         <p>Credit</p>
@@ -15,15 +15,15 @@
       </div>
     </div>
 
-    <a href="{% url 'app:transactions' %}" class="dashboard-item right">
+    <a href="{% url 'app:transactions' %}" class="dashboard-item">
+      <i class="fa-solid fa-table-list icon"></i>
       <div class="text">
         <p>Transactions</p>
         <p>Check your Transactions</p>
       </div>
-      <i class="fa-solid fa-table-list icon"></i>
     </a>
 
-    <a href="{% url 'app:transfer' %}" class="dashboard-item left">
+    <a href="{% url 'app:transfer' %}" class="dashboard-item">
       <i class="fa-solid fa-money-bill-transfer icon"></i>
       <div class="text">
         <p>Transfer</p>
@@ -31,15 +31,15 @@
       </div>
     </a>
 
-    <a href="{% url 'app:recharge' %}" class="dashboard-item right">
+    <a href="{% url 'app:recharge' %}" class="dashboard-item">
+      <i class="fa-solid fa-sim-card icon"></i>
       <div class="text">
         <p>Recharge</p>
         <p>Recharge your sim card directly</p>
       </div>
-      <i class="fa-solid fa-sim-card icon"></i>
     </a>
 
-    <a href="{% url 'app:charity' %}" class="dashboard-item left">
+    <a href="{% url 'app:charity' %}" class="dashboard-item">
       <i class="fa-solid fa-hand-holding-heart icon"></i>
       <div class="text">
         <p>Charity</p>
@@ -47,12 +47,12 @@
       </div>
     </a>
 
-    <a href="{% url 'app:profile' %}" class="dashboard-item right">
+    <a href="{% url 'app:profile' %}" class="dashboard-item">
+      <i class="fa-solid fa-user icon"></i>
       <div class="text">
         <p>Profile</p>
         <p>See your profile and information</p>
       </div>
-      <i class="fa-solid fa-user icon"></i>
     </a>
 
   </div>

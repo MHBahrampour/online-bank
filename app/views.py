@@ -179,7 +179,7 @@ def recharge(request):
       sender_bank_account_data.credit -= amount
       sender_bank_account_data.save() # Save the change (credeit value)
 
-      # Create and save the Transaction instance
+      
       transaction = Transaction.objects.create(
         type = 'Recharge',
         sender = sender,

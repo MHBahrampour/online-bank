@@ -27,25 +27,19 @@
 
     <p class="title">Onlie Bank</p>
 
-    <div class="banner-info">
+    <div class="text">
 
       <h2>A modern Bank in your hands.</h2>
       <h2>Join our +10,000 customers!</h2>
       <br>
       
-      {% if user.is_authenticated %}
-        <form action="{% url 'app:profile' %}">
-          <input type="submit" value="Go to Dashboard" class="input-button dashboard-btn">
-        </form>
-      {% else %}
-        <p>Are you ready to start?</p>
-        <form action="{% url 'user:register' %}">
-          <input type="submit" value="register" class="input-button register-btn">
-        </form>
-        <form action="{% url 'user:login' %}">
-          <input type="submit" value="login" class="input-button login-btn">
-        </form>
-      {% endif %}
+      <p>Are you ready to start?</p>
+      <form action="{% url 'user:register' %}">
+        <input type="submit" value="Register" class="register-btn">
+      </form>
+      <form action="{% url 'user:login' %}">
+        <input type="submit" value="Login" class="login-btn">
+      </form>
 
     </div>
   </div>
@@ -74,18 +68,31 @@
 
   <!-- Footer -->
   <div class="footer">
-    <p><i class="fa-solid fa-square-phone-flip"></i> Contact Us</p>
-    <p><i class="fa-solid fa-envelope-open-text"></i> Email: mail@onlinebank.ir</p>
-    <p><i class="fa-solid fa-building-columns"></i> Office Number: 021-24846901</p>
-    <br>
 
-    <p><i class="fa-solid fa-circle-dot"></i> Quick Access</p>
-    <div class="links">
-      <a class="no-decoration" href="{% url 'app:transfer' %"><i class="fa-solid fa-link"></i> Transfer</a>
-      <a class="no-decoration" href="{% url 'app:recharge' %"><i class="fa-solid fa-link"></i> Recharge</a>
-      <a class="no-decoration" href="{% url 'app:charity' %"><i class="fa-solid fa-link"></i> Charity</a>
+    <div>
+      <p class="title">Contact Us:</p>
+      <p><i class="fa-solid fa-envelope-open-text"></i> Email: mail@onlinebank.ir</p>
+      <p><i class="fa-solid fa-building-columns"></i> Office Number: 021-24846901</p>
     </div>
-    <br>
+
+    <div>
+      <p class="title">Useful links:</p>
+      <p><i class="fa-solid fa-link"></i> <a href="">App Tutorial</a></p>
+      <p><i class="fa-solid fa-link"></i> <a href="">Terms and Conditions</a></p>
+      <p><i class="fa-solid fa-link"></i> <a href="">Frequently Asked Questions</a></p>
+      <p><i class="fa-solid fa-link"></i> <a href="">List of bank branches</a></p>
+    </div>
+
+    <div>
+      <p class="title">Follow Us:</p>
+      <div class="social-media">
+        <i class="fa-brands fa-telegram fa-fw"></i>
+        <i class="fa-brands fa-whatsapp fa-fw"></i>
+        <i class="fa-brands fa-internet-explorer fa-fw"></i>
+        <i class="fa-brands fa-instagram fa-fw"></i>
+        <i class="fa-brands fa-linkedin fa-fw"></i>
+      </div>
+    </div>
 
     <p class="copy-right"><i class="fa-solid fa-copyright"></i> All Rights Reserved for Online Bank.</p>
   </div>

@@ -13,6 +13,12 @@ This app is just a simulation and no real transaction will happen.
 5. Donate to charity.
 6. Watch and edit your profile details.
 
+## Technologies used:
+
+1. Django
+2. PostgreSQL
+3. HTML, CSS, JavaScript
+
 ## Installation guide
 
 soon...
